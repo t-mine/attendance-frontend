@@ -1,6 +1,7 @@
 <template>
   <header>
-    <h1>Vue Router Test</h1>
+    <h1>Hello {{ user }}</h1>
+    <!--<span>{{ user }}</span>-->
     <nav>
       <router-link v-for="list in navList" :key="list.to" :to="list.to">
         {{ list.title }}
@@ -14,12 +15,13 @@ export default {
   data() {
     return {
       navList: [
-        { title: 'Page1', to: '/Page1' },
-        { title: 'Page2', to: '/Page2' }
-      ]
-    }
-  }
-}
+        { title: "Page1", to: "/page1" },
+        { title: "Page2", to: "/page2" },
+      ],
+      user: this.$store.state.user,
+    };
+  },
+};
 </script>
 
 <style>
