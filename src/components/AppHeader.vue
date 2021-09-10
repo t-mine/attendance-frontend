@@ -33,8 +33,8 @@ export default {
   data() {
     return {
       navList: [
-        { title: "Page1", to: "/page1" },
-        { title: "Page2", to: "/page2" },
+        { title: 'Page1', to: '/page1' },
+        { title: 'Page2', to: '/page2' },
       ],
       user: this.$store.state.user,
     };
