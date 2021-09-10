@@ -16,8 +16,7 @@ export default {
 </script>
 
 <style>
-body,
-h1 {
-  margin: 0;
+body {
+  background-color: #f5f5f5;
 }
 </style>
