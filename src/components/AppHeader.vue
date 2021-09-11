@@ -14,7 +14,7 @@ export default {
   data() {
     return {
       navList: [
-        { title: 'Page1', to: '/page1' },
+        { title: '勤務表', to: '/work-table' },
         { title: 'Page2', to: '/page2' },
       ],
       user: this.$store.state.user,

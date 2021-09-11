@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Login from '../pages/Login';
-import Page1 from '../pages/Page1';
+import WorkTable from '../pages/WorkTable';
 import Page2 from '../pages/Page2';
 
 const routes = [
@@ -13,8 +13,8 @@ const routes = [
     component: Login,
   },
   {
-    path: '/page1',
-    component: Page1,
+    path: '/work-table',
+    component: WorkTable,
   },
   {
     path: '/page2',
