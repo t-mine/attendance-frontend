@@ -1,0 +1,41 @@
+- request:
+    method: POST
+    url: /api/login
+    headers:
+      content-type: application/json
+    post: >
+      {"email":"tanaka@example.com","password":"tanaka"}
+
+  response:
+    status: 200
+    headers:
+      content-type: application/json
+    body: >
+      {"name": "Tanaka Taro","auth": "USER"}
+
+- request:
+    method: POST
+    url: /api/login
+    headers:
+      content-type: application/json
+    post: >
+      {"email":"tanaka@example.com","password":"tanaka1"}
+
+  response:
+    status: 401
+    headers:
+      content-type: application/json
+
+# 正規表現が効いてない？
+- request:
+    method: POST
+    url: /api/login
+    headers:
+      content-type: application/json
+    post: >
+      {"email":"(.*)","password":"(.*)"}
+
+  response:
+    status: 401
+    headers:
+      content-type: application/json
