@@ -1,6 +1,6 @@
 <template>
   <main class="form-signin">
-    <form>
+    <form v-on:submit.prevent="doLogin">
       <label for="inputEmail" class="visually-hidden">メールアドレス</label>
       <input
         type="email"
@@ -9,6 +9,7 @@
         placeholder="メールアドレス"
         required=""
         autofocus=""
+        v-model="user.email"
       />
       <label for="inputPassword" class="visually-hidden">パスワード</label>
       <input
@@ -17,6 +18,7 @@
         class="form-control"
         placeholder="パスワード"
         required=""
+        v-model="user.password"
       />
       <div class="checkbox mb-3">
         <label> <input type="checkbox" value="remember-me" /> 記憶する </label>
@@ -29,7 +31,39 @@
 </template>
 
 <script>
-export default {};
+const Axios = require('axios');
+//const qs = require('qs');
+let axios = Axios.create({
+  //  withCredentials: true,
+  //baseURL: 'http://localhost:8882',
+});
+
+export default {
+  data() {
+    return {
+      user: {},
+    };
+  },
+  methods: {
+    doLogin() {
+      console.log('start do login');
+
+      axios
+        .post('http://localhost:8882/api/login', {
+          email: this.user.email,
+          password: this.user.password,
+        })
+        .then((response) => {
+          console.log(response.data.token);
+        });
+
+      this.$store.dispatch('auth', {
+        email: this.user.email,
+        password: this.user.password,
+      });
+    },
+  },
+};
 </script>
 
 <style scoped>

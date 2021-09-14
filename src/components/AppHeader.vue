@@ -1,6 +1,6 @@
 <template>
   <header>
-    <h1>Hello {{ user }}</h1>
+    <h1>Hello {{ userName }}</h1>
     <nav>
       <router-link v-for="list in navList" :key="list.to" :to="list.to">
         {{ list.title }}
@@ -17,8 +17,12 @@ export default {
         { title: '勤務表', to: '/work-table' },
         { title: 'Page2', to: '/page2' },
       ],
-      user: this.$store.state.user,
     };
+  },
+  computed: {
+    userName: function () {
+      return this.$store.state.name;
+    },
   },
 };
 </script>

@@ -1,3 +1,15 @@
+# プリフライトリクエスト用　https://developer.mozilla.org/ja/docs/Glossary/Preflight_request
+- request:
+    method: OPTIONS
+    url: /.*
+
+  response:
+    status: 204
+    headers:
+      Access-Control-Allow-Origin: http://localhost:8080
+      Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE
+      Access-Control-Max-Age: 86400
+
 - request:
     method: POST
     url: /api/login
@@ -10,6 +22,8 @@
     status: 200
     headers:
       content-type: application/json
+      Access-Control-Allow-Origin: http://localhost:8080
+      Access-Control-Allow-Credentials: true
     body: >
       {"token":"dummy_token","name": "Tanaka Taro","auth": "USER"}
 
