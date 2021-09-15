@@ -1,12 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Login from '../pages/Login';
-import WorkTable from '../pages/WorkTable';
-import Page2 from '../pages/Page2';
+import Login from '@/pages/Login';
+import WorkTable from '@/pages/WorkTable';
+import Page2 from '@/pages/Page2';
 import Store from '@/store/index.js';
 
 const routes = [
   {
     path: '/',
+    name: 'login',
     redirect: '/login',
   },
   {
@@ -15,11 +16,13 @@ const routes = [
   },
   {
     path: '/work-table',
+    name: 'work-table',
     component: WorkTable,
     meta: { requiresAuth: true },
   },
   {
     path: '/page2',
+    name: 'page2',
     component: Page2,
     meta: { requiresAuth: true },
   },

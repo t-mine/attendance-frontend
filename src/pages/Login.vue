@@ -31,13 +31,7 @@
 </template>
 
 <script>
-const Axios = require('axios');
-//const qs = require('qs');
-let axios = Axios.create({
-  withCredentials: true,
-  //baseURL: 'http://localhost:8882',
-});
-
+import http from '@/http';
 export default {
   data() {
     return {
@@ -46,20 +40,12 @@ export default {
   },
   methods: {
     doLogin() {
-      console.log('start do login');
-
-      axios
-        .post('http://localhost:8882/api/login', {
-          email: this.user.email,
-          password: this.user.password,
-        })
-        .then((response) => {
-          console.log(response.data.token);
-        });
-
-      this.$store.dispatch('auth', {
-        email: this.user.email,
-        password: this.user.password,
+      http.post('login', this.user).then((response) => {
+        console.log(response.data.token);
+        this.user.token = response.data.token;
+        this.user.name = 'mine';
+        this.$store.dispatch('login', this.user);
+        this.$router.push({ name: 'work-table' });
       });
     },
   },

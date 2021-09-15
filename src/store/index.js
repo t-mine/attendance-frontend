@@ -14,13 +14,11 @@ export default createStore({
     },
   },
   actions: {
-    auth(context, user) {
-      console.log('start auth');
-      // TODO emailとpasswordでログインAPIをたたいてトークンを取得
-      const token = 'dummy_token';
-      user.token = token;
-      user.name = 'mine';
+    login(context, user) {
       context.commit('updateUser', user);
+    },
+    logout(context) {
+      context.commit('updateUser', {});
     },
   },
 });
