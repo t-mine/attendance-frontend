@@ -3,15 +3,15 @@
     <!-- 勤務表の上部 -->
     <table class="table">
       <tr>
-        <th style="width: 5%">
+        <th style="width: 100px">
           <input class="form-control text-center" type="text" value="2021" />
         </th>
-        <th style="width: 1%" class="align-middle">年</th>
-        <th style="width: 3%">
+        <th style="width: 30px" class="align-middle">年</th>
+        <th style="width: 50px">
           <input class="form-control text-center" type="text" value="8" />
         </th>
-        <th style="width: 1%" class="align-middle">月</th>
-        <th style="width: 90%" class="text-end align-middle">田中 太郎</th>
+        <th style="width: 30px" class="align-middle">月</th>
+        <th class="text-end align-middle">田中 太郎</th>
       </tr>
     </table>
 
