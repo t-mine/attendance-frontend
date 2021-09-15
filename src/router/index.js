@@ -35,10 +35,7 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   // TODO トークンが有効かチェック
-  if (
-    to.matched.some((record) => record.meta.requiresAuth) &&
-    !Store.state.token
-  ) {
+  if (to.matched.some((record) => record.meta.requiresAuth) && !Store.state.token) {
     next({ path: '/login', query: { redirect: to.fullPath } });
   } else {
     next();

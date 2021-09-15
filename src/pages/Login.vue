@@ -1,31 +1,9 @@
 <template>
   <main class="form-signin">
     <form v-on:submit.prevent="doLogin">
-      <label for="inputEmail" class="visually-hidden">メールアドレス</label>
-      <input
-        type="email"
-        id="inputEmail"
-        class="form-control"
-        placeholder="メールアドレス"
-        required=""
-        autofocus=""
-        v-model="user.email"
-      />
-      <label for="inputPassword" class="visually-hidden">パスワード</label>
-      <input
-        type="password"
-        id="inputPassword"
-        class="form-control"
-        placeholder="パスワード"
-        required=""
-        v-model="user.password"
-      />
-      <div class="checkbox mb-3">
-        <label> <input type="checkbox" value="remember-me" /> 記憶する </label>
-      </div>
-      <button class="w-100 btn btn-lg btn-primary" type="submit">
-        ログイン
-      </button>
+      <input type="email" class="form-control" placeholder="メールアドレス" required="" autofocus="" v-model="user.email" />
+      <input type="password" class="form-control" placeholder="パスワード" required="" v-model="user.password" />
+      <button class="w-100 btn btn-lg btn-primary" type="submit">ログイン</button>
     </form>
   </main>
 </template>
