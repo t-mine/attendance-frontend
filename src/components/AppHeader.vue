@@ -1,12 +1,13 @@
 <template>
-  <header>
-    <h1>Hello {{ userName }}</h1>
-    <nav>
-      <router-link v-for="list in navList" :key="list.to" :to="list.to">
-        {{ list.title }}
-      </router-link>
-    </nav>
-  </header>
+  <nav class="navbar navbar-dark bg-dark">
+    <a href="#" class="navbar-brand">Attendance System</a>
+    <div v-if="loggedIn" class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">menu</button>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+        <li><a class="dropdown-item" v-on:click="doLogout">logout</a></li>
+      </ul>
+    </div>
+  </nav>
 </template>
 
 <script>
@@ -20,25 +21,25 @@ export default {
     };
   },
   computed: {
-    userName: function () {
-      return this.$store.state.name;
+    loggedIn: function () {
+      return this.$store.state.token;
+    },
+  },
+  methods: {
+    doLogout() {
+      this.$store.dispatch('logout', this.user);
+      this.$router.push({ name: 'login' });
     },
   },
 };
 </script>
 
 <style>
-header {
-  display: flex;
-  justify-content: space-between;
-  background: gray;
-  color: white;
+nav {
+  padding-left: 20px;
 }
-h1 {
-  padding: 10px;
-}
-nav a {
-  display: inline-block;
-  padding: 20px 30px;
+.dropdown {
+  width: 100px;
+  margin-left: auto;
 }
 </style>
