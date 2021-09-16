@@ -20,11 +20,11 @@
     <!-- 勤務表の下部 -->
     <table class="table table-bordered table-secondary">
       <tr class="table-dark">
-        <th style="width: 2%">日</th>
-        <th style="width: 4%">曜日</th>
-        <th style="width: 10%">開始時刻</th>
-        <th style="width: 10%">終了時刻</th>
-        <th style="width: 74%">メモ</th>
+        <th style="width: 35px">日</th>
+        <th style="width: 70px">曜日</th>
+        <th style="width: 140px">開始時刻</th>
+        <th style="width: 140px">終了時刻</th>
+        <th>メモ</th>
       </tr>
       <tr>
         <td>1</td>
