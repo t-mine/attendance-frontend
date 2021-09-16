@@ -3,14 +3,16 @@
     <!-- 勤務表の上部 -->
     <table class="table">
       <tr>
-        <th style="width: 100px">
-          <input class="form-control text-center" type="text" value="2021" />
+        <th style="width: 120px">
+          <select style="width: 100px" v-model="yearSelected" class="form-select form-select-sm" aria-label=".form-select-sm example">
+            <option v-for="year in yearList" :key="year" :value="year">{{ year }}年</option>
+          </select>
         </th>
-        <th style="width: 30px" class="align-middle">年</th>
-        <th style="width: 50px">
-          <input class="form-control text-center" type="text" value="8" />
+        <th style="width: 70px">
+          <select v-model="monthSelected" class="form-select form-select-sm" aria-label=".form-select-sm example">
+            <option v-for="month in monthList" :key="month" :value="month">{{ month }}月</option>
+          </select>
         </th>
-        <th style="width: 30px" class="align-middle">月</th>
         <th class="text-end align-middle">田中 太郎</th>
       </tr>
     </table>
@@ -57,7 +59,31 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      yearList: [],
+      monthList: [],
+      yearSelected: '',
+      monthSelected: '',
+    };
+  },
+  created: function () {
+    const today = new Date();
+
+    let year = today.getFullYear();
+    this.yearSelected = year;
+    for (let i = 0; i < 10; i++) {
+      this.yearList.push(year--);
+    }
+
+    let month = today.getMonth() + 1;
+    this.monthSelected = month;
+    for (let i = 1; i <= 12; i++) {
+      this.monthList.push(i);
+    }
+  },
+};
 </script>
 
-<style></style>
+<style scoped></style>

@@ -19,4 +19,7 @@ export default {
 body {
   background-color: #f5f5f5;
 }
+div {
+  text-align: center;
+}
 </style>
