@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import http from '@/http';
+import apiClient4Login from '@/apiClient4Login';
 export default {
   data() {
     return {
@@ -18,8 +18,9 @@ export default {
   },
   methods: {
     doLogin() {
-      http.post('login', this.user).then((response) => {
+      apiClient4Login.post('login', this.user).then((response) => {
         console.log(response.data.token);
+        // vuexのユーザ情報を更新
         this.user.token = response.data.token;
         this.user.name = 'mine';
         this.$store.dispatch('login', this.user);

@@ -10,8 +10,9 @@
       Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE
       Access-Control-Max-Age: 86400
       Access-Control-Allow-Credentials: true
-      Access-Control-Allow-Headers: Content-Type
+      Access-Control-Allow-Headers: Content-Type, Authorization
 
+# ログイン
 - request:
     method: POST
     url: /api/login
@@ -56,6 +57,7 @@
     headers:
       content-type: application/json
 
+# 勤務表取得
 - request:
     method: GET
     url: /api/work-table
@@ -69,6 +71,8 @@
     status: 200
     headers:
       content-type: application/json
+      Access-Control-Allow-Origin: http://localhost:8080
+      Access-Control-Allow-Credentials: true
     body: >
       [
         {"day": 1,"dayOfWeek":"月","startTime":"09:00","endTime":"18:00","memo":"a"},

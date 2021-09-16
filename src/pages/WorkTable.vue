@@ -59,6 +59,7 @@
 </template>
 
 <script>
+import apiClient from '@/apiClient';
 export default {
   data() {
     return {
@@ -70,18 +71,37 @@ export default {
   },
   created: function () {
     const today = new Date();
-
+    // 年セレクトボックスのデータ作成
     let year = today.getFullYear();
     this.yearSelected = year;
     for (let i = 0; i < 10; i++) {
       this.yearList.push(year--);
     }
-
+    // 月セレクトボックスのデータ作成
     let month = today.getMonth() + 1;
     this.monthSelected = month;
     for (let i = 1; i <= 12; i++) {
       this.monthList.push(i);
     }
+    // 勤務表データ取得
+    this.getWorkTable();
+  },
+  methods: {
+    getWorkTable() {
+      apiClient
+        .get('work-table', {
+          // このタイミングでしかGETにはapplication/jsonを設定できない
+          headers: { 'Content-Type': 'application/json' },
+          data: {
+            email: this.$store.state.email,
+            year: this.yearSelected,
+            month: this.monthSelected,
+          },
+        })
+        .then((response) => {
+          console.log(response);
+        });
+    },
   },
 };
 </script>
