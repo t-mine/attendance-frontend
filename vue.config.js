@@ -5,4 +5,7 @@ module.exports = {
       title: 'attendance',
     },
   },
+  devServer: {
+    proxy: 'http://localhost:8882',
+  },
 };

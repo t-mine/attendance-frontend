@@ -30,6 +30,8 @@
     body: >
       {"token":"dummy_token","name": "Tanaka Taro","auth": "USER"}
 
+# ログイン失敗
+# 401のときstubby4jがレスポンスヘッダーを書き換えてるのでCORSエラーになる。。
 - request:
     method: POST
     url: /api/login
@@ -42,6 +44,10 @@
     status: 401
     headers:
       content-type: application/json
+      Access-Control-Allow-Origin: http://localhost:8080
+      Access-Control-Allow-Credentials: true
+    body: >
+      {"token":"dummy_token","name": "Tanaka Taro","auth": "USER"}
 
 # 正規表現が効いてない？
 - request:
@@ -62,10 +68,14 @@
     method: GET
     url: /api/work-table
     headers:
-      content-type: application/json
+      #      content-type: application/json
       Authorization: dummy_token
-    post: >
-      {"email":"tanaka@example.com","year":2021,"month":9}
+    query:
+      email: 'tanaka%40example.com'
+      year: 2021
+      month: 9
+  #    post: >
+  #      {"email":"tanaka@example.com","year":2021,"month":9}
 
   response:
     status: 200

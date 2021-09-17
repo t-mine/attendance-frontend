@@ -59,7 +59,7 @@
 </template>
 
 <script>
-import apiClient from '@/apiClient';
+import axios from '@/axios';
 export default {
   data() {
     return {
@@ -67,6 +67,7 @@ export default {
       monthList: [],
       yearSelected: '',
       monthSelected: '',
+      workTable: [],
     };
   },
   created: function () {
@@ -84,22 +85,36 @@ export default {
       this.monthList.push(i);
     }
     // 勤務表データ取得
-    this.getWorkTable();
+    //this.getWorkTable();
+  },
+  watch: {
+    yearSelected: function () {
+      if (this.yearSelected && this.monthSelected) {
+        this.getWorkTable();
+      }
+    },
+    monthSelected: function () {
+      if (this.yearSelected && this.monthSelected) {
+        this.getWorkTable();
+      }
+    },
   },
   methods: {
     getWorkTable() {
-      apiClient
+      axios
         .get('work-table', {
-          // このタイミングでしかGETにはapplication/jsonを設定できない
-          headers: { 'Content-Type': 'application/json' },
-          data: {
+          params: {
             email: this.$store.state.email,
             year: this.yearSelected,
             month: this.monthSelected,
           },
         })
         .then((response) => {
-          console.log(response);
+          if (response.status === 200) {
+            this.workTable = response.data;
+          } else {
+            console.log('データの取得に失敗しました。');
+          }
         });
     },
   },

@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import apiClient4Login from '@/apiClient4Login';
+import axios from '@/axios';
 export default {
   data() {
     return {
@@ -18,14 +18,22 @@ export default {
   },
   methods: {
     doLogin() {
-      apiClient4Login.post('login', this.user).then((response) => {
-        console.log(response.data.token);
-        // vuexのユーザ情報を更新
-        this.user.token = response.data.token;
-        this.user.name = 'mine';
-        this.$store.dispatch('login', this.user);
-        this.$router.push({ name: 'work-table' });
-      });
+      axios
+        .post('login', this.user)
+        .then((response) => {
+          if (response.status === 200) {
+            // vuexのユーザ情報を更新
+            this.user.token = response.data.token;
+            this.user.name = 'mine';
+            this.$store.dispatch('login', this.user);
+            this.$router.push({ name: 'work-table' });
+          } else {
+            console.log(response);
+          }
+        })
+        .catch((err) => {
+          console.log('err:', err);
+        });
     },
   },
 };
