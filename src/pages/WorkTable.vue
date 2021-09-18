@@ -96,13 +96,30 @@ export default {
             this.workTable = response.data;
           } else {
             console.log(response);
-            this.workTable = [];
+            this.workTable = this.getEmptyWorkTable();
           }
         })
         .catch((error) => {
           console.log(error);
-          this.workTable = [];
+          this.workTable = this.getEmptyWorkTable();
         });
+    },
+    getEmptyWorkTable() {
+      const workTable = [];
+      const lastDay = new Date(this.yearSelected, this.monthSelected, 0);
+      // 1日から月の末日までループ
+      for (let day = 1; day <= lastDay.getDate(); day++) {
+        const row = {};
+        row.day = day;
+        const dayOfWeek = new Date(this.yearSelected, this.monthSelected, day).getDay();
+        row.dayOfWeek = ['日', '月', '火', '水', '木', '金', '土'][dayOfWeek];
+        if (![0, 6].includes(dayOfWeek)) {
+          row.startTime = '9:00';
+          row.endTime = '18:00';
+        }
+        workTable.push(row);
+      }
+      return workTable;
     },
   },
 };
