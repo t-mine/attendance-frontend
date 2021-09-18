@@ -1,5 +1,5 @@
 <template>
-  <div class="p-3">
+  <div class="container">
     <!-- 勤務表の上部 -->
     <table class="table">
       <tr>
@@ -109,6 +109,9 @@ export default {
 </script>
 
 <style scoped>
+.container {
+  margin-top: 20px;
+}
 .table td,
 .table th {
   padding: 3px;
