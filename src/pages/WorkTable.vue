@@ -18,42 +18,25 @@
     </table>
 
     <!-- 勤務表の下部 -->
-    <table class="table table-bordered table-secondary">
-      <tr class="table-dark">
-        <th style="width: 35px">日</th>
-        <th style="width: 70px">曜日</th>
-        <th style="width: 140px">開始時刻</th>
-        <th style="width: 140px">終了時刻</th>
-        <th>メモ</th>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td>月</td>
-        <td>09:00</td>
-        <td>18:00</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>火</td>
-        <td>09:00</td>
-        <td>18:00</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>水</td>
-        <td>09:00</td>
-        <td>18:00</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td>木</td>
-        <td>09:00</td>
-        <td>18:00</td>
-        <td></td>
-      </tr>
+    <table class="table table-bordered">
+      <thead class="table-secondary">
+        <tr>
+          <th style="width: 35px">日</th>
+          <th style="width: 70px">曜日</th>
+          <th style="width: 140px">開始時刻</th>
+          <th style="width: 140px">終了時刻</th>
+          <th>メモ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="item in workTable" :key="item.day">
+          <td>{{ item.day }}</td>
+          <td>{{ item.dayOfWeek }}</td>
+          <td>{{ item.startTime }}</td>
+          <td>{{ item.endTime }}</td>
+          <td>{{ item.memo }}</td>
+        </tr>
+      </tbody>
     </table>
   </div>
 </template>
@@ -84,8 +67,6 @@ export default {
     for (let i = 1; i <= 12; i++) {
       this.monthList.push(i);
     }
-    // 勤務表データ取得
-    //this.getWorkTable();
   },
   watch: {
     yearSelected: function () {
@@ -111,14 +92,25 @@ export default {
         })
         .then((response) => {
           if (response.status === 200) {
+            console.log(response.data);
             this.workTable = response.data;
           } else {
-            console.log('データの取得に失敗しました。');
+            console.log(response);
+            this.workTable = [];
           }
+        })
+        .catch((error) => {
+          console.log(error);
+          this.workTable = [];
         });
     },
   },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.table td,
+.table th {
+  padding: 3px;
+}
+</style>
