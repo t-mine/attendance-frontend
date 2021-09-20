@@ -24,7 +24,7 @@ export default {
           if (response.status === 200) {
             // vuexのユーザ情報を更新
             this.user.token = response.data.token;
-            this.user.name = 'mine';
+            this.user.name = response.data.name;
             this.$store.dispatch('login', this.user);
             this.$router.push({ name: 'work-table' });
           } else {
