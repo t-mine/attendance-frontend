@@ -124,38 +124,43 @@
       content-type: application/json
       Authorization: dummy_token
     post: >
-      [
-        {"day": 1,"dayOfWeek":"月","startTime":"09:00","endTime":"18:00","memo":"a"},
-        {"day": 2,"dayOfWeek":"火","startTime":"09:00","endTime":"18:00","memo":""},
-        {"day": 3,"dayOfWeek":"水","startTime":"09:00","endTime":"18:00","memo":""},
-        {"day": 4,"dayOfWeek":"木","startTime":"09:00","endTime":"18:00","memo":""},
-        {"day": 5,"dayOfWeek":"金","startTime":"09:00","endTime":"18:00","memo":""},
-        {"day": 6,"dayOfWeek":"土","startTime":"","endTime":"","memo":""},
-        {"day": 7,"dayOfWeek":"日","startTime":"","endTime":"","memo":""},
-        {"day": 8,"dayOfWeek":"月","startTime":"09:00","endTime":"18:00","memo":""},
-        {"day": 9,"dayOfWeek":"火","startTime":"09:00","endTime":"18:00","memo":""},
-        {"day": 10,"dayOfWeek":"水","startTime":"09:00","endTime":"18:00","memo":""},
-        {"day": 11,"dayOfWeek":"木","startTime":"09:00","endTime":"18:00","memo":""},
-        {"day": 12,"dayOfWeek":"金","startTime":"09:00","endTime":"18:00","memo":""},
-        {"day": 13,"dayOfWeek":"土","startTime":"","endTime":"","memo":""},
-        {"day": 14,"dayOfWeek":"日","startTime":"","endTime":"","memo":""},
-        {"day": 15,"dayOfWeek":"月","startTime":"09:00","endTime":"18:00","memo":""},
-        {"day": 16,"dayOfWeek":"火","startTime":"09:00","endTime":"18:00","memo":""},
-        {"day": 17,"dayOfWeek":"水","startTime":"09:00","endTime":"18:00","memo":""},
-        {"day": 18,"dayOfWeek":"木","startTime":"09:00","endTime":"18:00","memo":""},
-        {"day": 19,"dayOfWeek":"金","startTime":"09:00","endTime":"18:00","memo":""},
-        {"day": 20,"dayOfWeek":"土","startTime":"","endTime":"","memo":""},
-        {"day": 21,"dayOfWeek":"日","startTime":"","endTime":"","memo":""},
-        {"day": 22,"dayOfWeek":"月","startTime":"09:00","endTime":"18:00","memo":""},
-        {"day": 23,"dayOfWeek":"火","startTime":"09:00","endTime":"18:00","memo":""},
-        {"day": 24,"dayOfWeek":"水","startTime":"09:00","endTime":"18:00","memo":""},
-        {"day": 25,"dayOfWeek":"木","startTime":"09:00","endTime":"18:00","memo":""},
-        {"day": 26,"dayOfWeek":"金","startTime":"09:00","endTime":"18:00","memo":""},
-        {"day": 27,"dayOfWeek":"土","startTime":"","endTime":"","memo":""},
-        {"day": 28,"dayOfWeek":"日","startTime":"","endTime":"","memo":""},
-        {"day": 29,"dayOfWeek":"月","startTime":"09:00","endTime":"18:00","memo":""},
-        {"day": 30,"dayOfWeek":"火","startTime":"09:00","endTime":"18:00","memo":""}
-      ]
+      {
+        "email" : "tanaka@example.com",
+        "year" : 2021,
+        "month" : 9,
+        "workTable" : [
+          {"day": 1,"dayOfWeek":"月","startTime":"09:00","endTime":"18:00","memo":"a"},
+          {"day": 2,"dayOfWeek":"火","startTime":"09:00","endTime":"18:00","memo":""},
+          {"day": 3,"dayOfWeek":"水","startTime":"09:00","endTime":"18:00","memo":""},
+          {"day": 4,"dayOfWeek":"木","startTime":"09:00","endTime":"18:00","memo":""},
+          {"day": 5,"dayOfWeek":"金","startTime":"09:00","endTime":"18:00","memo":""},
+          {"day": 6,"dayOfWeek":"土","startTime":"","endTime":"","memo":""},
+          {"day": 7,"dayOfWeek":"日","startTime":"","endTime":"","memo":""},
+          {"day": 8,"dayOfWeek":"月","startTime":"09:00","endTime":"18:00","memo":""},
+          {"day": 9,"dayOfWeek":"火","startTime":"09:00","endTime":"18:00","memo":""},
+          {"day": 10,"dayOfWeek":"水","startTime":"09:00","endTime":"18:00","memo":""},
+          {"day": 11,"dayOfWeek":"木","startTime":"09:00","endTime":"18:00","memo":""},
+          {"day": 12,"dayOfWeek":"金","startTime":"09:00","endTime":"18:00","memo":""},
+          {"day": 13,"dayOfWeek":"土","startTime":"","endTime":"","memo":""},
+          {"day": 14,"dayOfWeek":"日","startTime":"","endTime":"","memo":""},
+          {"day": 15,"dayOfWeek":"月","startTime":"09:00","endTime":"18:00","memo":""},
+          {"day": 16,"dayOfWeek":"火","startTime":"09:00","endTime":"18:00","memo":""},
+          {"day": 17,"dayOfWeek":"水","startTime":"09:00","endTime":"18:00","memo":""},
+          {"day": 18,"dayOfWeek":"木","startTime":"09:00","endTime":"18:00","memo":""},
+          {"day": 19,"dayOfWeek":"金","startTime":"09:00","endTime":"18:00","memo":""},
+          {"day": 20,"dayOfWeek":"土","startTime":"","endTime":"","memo":""},
+          {"day": 21,"dayOfWeek":"日","startTime":"","endTime":"","memo":""},
+          {"day": 22,"dayOfWeek":"月","startTime":"09:00","endTime":"18:00","memo":""},
+          {"day": 23,"dayOfWeek":"火","startTime":"09:00","endTime":"18:00","memo":""},
+          {"day": 24,"dayOfWeek":"水","startTime":"09:00","endTime":"18:00","memo":""},
+          {"day": 25,"dayOfWeek":"木","startTime":"09:00","endTime":"18:00","memo":""},
+          {"day": 26,"dayOfWeek":"金","startTime":"09:00","endTime":"18:00","memo":""},
+          {"day": 27,"dayOfWeek":"土","startTime":"","endTime":"","memo":""},
+          {"day": 28,"dayOfWeek":"日","startTime":"","endTime":"","memo":""},
+          {"day": 29,"dayOfWeek":"月","startTime":"09:00","endTime":"18:00","memo":""},
+          {"day": 30,"dayOfWeek":"火","startTime":"09:00","endTime":"18:00","memo":""}
+        ]
+      }
 
   response:
     status: 200

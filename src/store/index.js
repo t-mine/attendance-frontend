@@ -7,6 +7,7 @@ export default createStore({
     email: '',
     token: '',
   },
+
   mutations: {
     updateUser(state, user) {
       state.name = user.name;
@@ -14,6 +15,7 @@ export default createStore({
       state.token = user.token;
     },
   },
+
   actions: {
     login(context, user) {
       context.commit('updateUser', user);
@@ -22,5 +24,6 @@ export default createStore({
       context.commit('updateUser', {});
     },
   },
+
   plugins: [createPersistedState({})],
 });

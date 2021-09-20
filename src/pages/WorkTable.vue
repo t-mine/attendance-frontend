@@ -186,7 +186,12 @@ export default {
     // 勤務表データ更新
     updateWorkTable() {
       axios
-        .put('work-table', this.editWorkTable)
+        .put('work-table', {
+          email: this.$store.state.email,
+          year: this.yearSelected,
+          month: this.monthSelected,
+          workTable: this.editWorkTable,
+        })
         .then((response) => {
           if (response.status === 200) {
             console.log(response.data);
