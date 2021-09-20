@@ -1,9 +1,9 @@
 <template>
   <div class="container mt-3 mb-3">
-    <!-- 勤務表の上部 -->
     <table class="table">
       <tr>
         <th style="width: 120px">
+          <!-- 年セレクトボックス -->
           <select
             v-bind:disabled="isEditing"
             style="width: 100px"
@@ -14,6 +14,7 @@
             <option v-for="year in yearList" :key="year" :value="year">{{ year }}年</option>
           </select>
         </th>
+        <!-- 月セレクトボックス -->
         <th style="width: 70px">
           <select
             v-bind:disabled="isEditing"
@@ -24,10 +25,11 @@
             <option v-for="month in monthList" :key="month" :value="month">{{ month }}月</option>
           </select>
         </th>
+        <!-- ユーザー名 -->
         <th class="text-end align-middle">{{ this.$store.state.name }}</th>
       </tr>
     </table>
-    <!-- 勤務表の下部 -->
+    <!-- 勤務表 -->
     <table class="table table-bordered" v-on:click="startEdit">
       <thead class="table-secondary">
         <tr>
@@ -57,9 +59,11 @@
         </tr>
       </tbody>
     </table>
+    <!-- 編集ボタン -->
     <div v-if="!isEditing && workTableCreated" class="text-end">
       <button class="w-10 btn btn-primary" v-on:click="startEdit">編集</button>
     </div>
+    <!-- キャンセルボタン、更新ボタン -->
     <div v-if="isEditing" class="text-end">
       <button class="w-10 btn btn-danger cancel-btn" v-on:click="cancelEdit">キャンセル</button>
       <button class="w-10 btn btn-success" v-on:click="updateWorkTable">勤務表を更新</button>
@@ -73,13 +77,18 @@ import _ from 'lodash';
 export default {
   data() {
     return {
+      // 年月セレクトボックス
       yearList: [],
       monthList: [],
       yearSelected: '',
       monthSelected: '',
+      // 勤務表
       workTable: [],
+      // 勤務表(編集時)
       editWorkTable: [],
+      // 編集中フラグ
       isEditing: false,
+      // 勤務表の描画完了フラグ(編集ボタンのちらつき防止に使用する)
       workTableCreated: false,
     };
   },
