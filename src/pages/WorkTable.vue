@@ -26,7 +26,7 @@
           </select>
         </th>
         <!-- ユーザー名 -->
-        <th class="text-end align-middle">{{ this.$store.state.name }}</th>
+        <th class="text-end align-middle">{{ userName }}</th>
       </tr>
     </table>
     <!-- 勤務表 -->
@@ -77,6 +77,8 @@ import _ from 'lodash';
 export default {
   data() {
     return {
+      // ユーザー名
+      userName: this.$store.state.name,
       // 年月セレクトボックス
       yearList: [],
       monthList: [],
