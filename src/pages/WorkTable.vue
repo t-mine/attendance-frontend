@@ -43,9 +43,9 @@
       <tbody v-if="!isEditing">
         <tr v-for="item in workTable" :key="item.day">
           <td>{{ item.day }}</td>
-          <td>{{ item.dayOfWeek }}</td>
-          <td>{{ item.startTime }}</td>
-          <td>{{ item.endTime }}</td>
+          <td>{{ item.day_of_week }}</td>
+          <td>{{ item.start_time }}</td>
+          <td>{{ item.end_time }}</td>
           <td class="text-start memo-label">{{ item.memo }}</td>
         </tr>
       </tbody>
@@ -150,9 +150,10 @@ export default {
           },
         })
         .then((response) => {
-          if (response.status === 200) {
+          if (response.status === 200 && response.data.length > 0) {
             console.log(response.data);
             this.workTable = response.data;
+            this.workTable = _.orderBy(this.workTable, ['day'], ['asc']);
           } else {
             console.log(response);
             this.workTable = this.getEmptyWorkTable();
@@ -175,10 +176,10 @@ export default {
         const row = {};
         row.day = day;
         const dayOfWeek = new Date(this.yearSelected, this.monthSelected, day).getDay();
-        row.dayOfWeek = ['日', '月', '火', '水', '木', '金', '土'][dayOfWeek];
+        row.day_of_week = ['日', '月', '火', '水', '木', '金', '土'][dayOfWeek];
         if (![0, 6].includes(dayOfWeek)) {
-          row.startTime = '9:00';
-          row.endTime = '18:00';
+          row.start_time = '9:00';
+          row.end_time = '18:00';
         }
         workTable.push(row);
       }
@@ -187,13 +188,14 @@ export default {
 
     // 勤務表データ更新
     updateWorkTable() {
+      let copyEditWorkTable = _.cloneDeep(this.editWorkTable);
+      copyEditWorkTable.forEach((row) => {
+        row.email = this.$store.state.email;
+        row.year = this.yearSelected;
+        row.month = this.monthSelected;
+      });
       axios
-        .put('work-table', {
-          email: this.$store.state.email,
-          year: this.yearSelected,
-          month: this.monthSelected,
-          workTable: this.editWorkTable,
-        })
+        .put('work-table', copyEditWorkTable)
         .then((response) => {
           if (response.status === 200) {
             console.log(response.data);

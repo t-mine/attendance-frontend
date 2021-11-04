@@ -7,6 +7,6 @@ module.exports = {
     },
   },
   devServer: {
-    proxy: 'http://localhost:8882',
+    // proxy: 'http://localhost:8882',
   },
 };
