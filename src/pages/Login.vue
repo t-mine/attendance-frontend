@@ -5,6 +5,7 @@
       <input type="password" class="form-control" placeholder="パスワード" required="" v-model="user.password" />
       <button class="w-100 btn btn-lg btn-primary" type="submit">ログイン</button>
     </form>
+    <div id="error-message">{{ errorMessage }}</div>
   </main>
 </template>
 
@@ -14,6 +15,7 @@ export default {
   data() {
     return {
       user: {},
+      errorMessage: '',
     };
   },
   methods: {
@@ -33,6 +35,7 @@ export default {
         })
         .catch((err) => {
           console.log('err:', err);
+          this.errorMessage = 'メールアドレスかパスワードが違います。';
         });
     },
   },
@@ -72,5 +75,10 @@ body {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+#error-message {
+  color: red;
+  margin: 5px;
 }
 </style>
