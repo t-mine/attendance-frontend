@@ -9,7 +9,6 @@
     "prettier": "prettier --write ./src/**/*.{js,vue}"
   },
   "dependencies": {
-    "amazon-cognito-identity-js": "5.2.2",
     "axios": "0.21.4",
     "bootstrap": "5.1.1",
     "core-js": "3.6.5",
