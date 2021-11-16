@@ -7,6 +7,7 @@ const instance = axios.create({
 
 instance.interceptors.request.use((request) => {
   console.log(request);
+  request.headers['x-api-key'] = process.env.VUE_APP_API_KEY;
   if (store.state.token) {
     request.headers['Authorization'] = store.state.token;
   }

@@ -16,14 +16,16 @@ npm run serve
 
 ```
 npm run build
+
+.env.localに下記を設定しておくこと
+　VUE_APP_API_BASE_URL
+　VUE_APP_API_KEY
 ```
 
 ### Deploy
 
 ```
-vueでrouterを使ってる時のnginxの設定
-https://router.vuejs.org/ja/guide/essentials/history-mode.html
-※CloudFront+S3の場合はどうなる？
+npm run deploy
 ```
 
 ### Lints and fixes files
